@@ -1,0 +1,10 @@
+<label for="name">Name </label>
+
+<!-- 
+    agarrar elemento desde el imput
+    <input type="text" id="name" #perosonELem />
+    <button (click)="onCreatePerson(perosonELem.value)">Create</button>
+-->
+
+<input type="text" id="name" [(ngModel)]="enteredPersonName" />
+<button (click)="onCreatePerson()">Create</button>
