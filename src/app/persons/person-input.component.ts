@@ -9,7 +9,6 @@ export class PersonInputComponent {
   @Output() personCreate = new EventEmitter<string>();
 
   enteredPersonName = "";
-
   onCreatePerson() {
     console.log("Create person:" + this.enteredPersonName);
     this.personCreate.emit(this.enteredPersonName);
