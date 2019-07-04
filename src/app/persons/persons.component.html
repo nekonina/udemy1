@@ -1,5 +1,11 @@
 <ion-content>
-  <ion-list>
-    <ion-item *ngFor="let person of personsList">{{ person }}</ion-item>
+  <p *ngIf="isFetching">Loading...</p>
+  <ion-list *ngIf="!isFetching">
+    <ion-item
+      *ngFor="let person of personsList"
+      (click)="onRemovePerson(person)"
+    >
+      {{ person }}
+    </ion-item>
   </ion-list>
 </ion-content>
