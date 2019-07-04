@@ -1,13 +1,13 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from "@angular/core";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
+export class PersonsService {
+  persons: string[] = ["Max", "Iri", "Fer", "Manu"];
 
-export class PersonsService{
-  persons: string[] = ["Max", "iri", "Fer", "manu"];
-
-  addPerson(name: string){
+  addPerson(name: string) {
     this.persons.push(name);
+    console.log(this.persons);
   }
 }
