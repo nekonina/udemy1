@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar color="black">
+    <ion-title>Recipes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <app-recipe-item
+      *ngFor="let recipe of recipes"
+      [recipeItem]="recipe"
+    ></app-recipe-item>
+  </ion-list>
+  <ion-toggle
+    checked="true"
+    [(ngModel)]="black"
+    (ionChange)="changeT()"
+  ></ion-toggle>
+</ion-content>
