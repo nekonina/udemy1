@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { RecipesService } from "../recipes.service";
 import { Recipes } from "../recipe.model";
@@ -9,7 +9,7 @@ import { AlertController } from "@ionic/angular";
   templateUrl: "./recipe-detail.page.html",
   styleUrls: ["./recipe-detail.page.scss"]
 })
-export class RecipeDetailPage implements OnInit {
+export class RecipeDetailPage implements OnInit, OnDestroy {
   loadRecipe: Recipes;
   constructor(
     private activateRoute: ActivatedRoute,
@@ -19,6 +19,7 @@ export class RecipeDetailPage implements OnInit {
   ) {}
 
   ngOnInit() {
+    console.log("ngOnInit");
     this.activateRoute.paramMap.subscribe(paramMap => {
       if (!paramMap.has("recipeId")) {
         this.router.navigate(["./recipes"]);
@@ -28,7 +29,21 @@ export class RecipeDetailPage implements OnInit {
       this.loadRecipe = this.recepiesServ.getRecipe(recipeId);
     });
   }
-
+  ionViewWillEnter() {
+    console.log("ionViewWillEnter");
+  }
+  ionViewWillLeave() {
+    console.log("ionViewWillLeave");
+  }
+  ionViewDidEnter() {
+    console.log("ionViewDidEnter");
+  }
+  ionViewDidLeave() {
+    console.log("ionViewDidLeave");
+  }
+  ngOnDestroy() {
+    console.log("ngOnDestroy");
+  }
   delRecipe() {
     this.alertCtrl
       .create({

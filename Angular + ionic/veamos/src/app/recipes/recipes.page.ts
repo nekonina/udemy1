@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Recipes } from "./recipe.model";
 import { RecipesService } from "./recipes.service";
 import { ThemeService } from "../theme.service";
@@ -33,7 +33,7 @@ const themes = {
   templateUrl: "./recipes.page.html",
   styleUrls: ["./recipes.page.scss"]
 })
-export class RecipesPage implements OnInit {
+export class RecipesPage implements OnInit, OnDestroy {
   recipes: Recipes[];
   public black: boolean = true;
 
@@ -54,7 +54,25 @@ export class RecipesPage implements OnInit {
   }
 
   ngOnInit() {
-    this.recipes = this.recipeServ.getAllRecipes();
     this.changeTheme("dark");
+    console.log("ngOnInit()");
+  }
+
+  ionViewWillEnter() {
+    this.recipes = this.recipeServ.getAllRecipes();
+    console.log("ionViewWillEnter");
+    console.log(this.recipes);
+  }
+  ionViewWillLeave() {
+    console.log("ionViewWillLeave");
+  }
+  ionViewDidEnter() {
+    console.log("ionViewDidEnter");
+  }
+  ionViewDidLeave() {
+    console.log("ionViewDidLeave");
+  }
+  ngOnDestroy() {
+    console.log("ngOnDestroy");
   }
 }
